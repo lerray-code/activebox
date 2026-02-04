@@ -5,14 +5,24 @@ $mainFont:  "Raleway", sans-serif;
 $noteFont: "Cardo", serif;
 $textColorLight: #fff;
 $textColorDark: #000;
-$textCOlorGrey: #6C7279;
-$pinkColor: #FF4343;
-$redColor: #E71414;
-$linkGreyColor: #BABBC5;
-$bgPurpel: #5C3249;
-$bgDark: #252B49;
+$textColorGrey: #6C7279;
+$textColorPink: #FF4343;
+$btnPinkColor: #FF4343;
+$btnHoverColor: #E71414;
+$mediaLinkInteractionColor: #FF4343;
+$linkHoverColor: #BABBC5;
+$linkActiveColor:#E71414;
+$cardHoverColor: #FF4343;
+$cardActiveColor:#E71414;
+$headerUnderLineColor: #BABBC5;
+$bgPurple: #5C3249;
+$bgShadowDark: #252B49;
 $textNameDark: #2D3033;
 $borderLight: #C6CBCD;
+$borderWhiteColor: #fff;
+$footerBgColor: #353C65;
+$footerBgColorDark: #2C3154;
+$footerTextGrey: #808080;
 
 @mixin font($textSize, $lineHeight, $fontWeight: 400){
     font-size: $textSize;
@@ -25,21 +35,40 @@ $borderLight: #C6CBCD;
     color:$textColorLight;
     text-transform: uppercase;
     text-decoration: none;
-    background-color: $pinkColor;
+    background-color: $btnPinkColor;
     padding: 25px 0;
-    border: 1px solid transparent;
+    border: none;
     max-width: 370px;
     width: 100%;
+    transition: background-color 0.6s, box-shadow  0.2s;
 }
     %btnHover{
-        background-color: $redColor;
+        background-color: $btnHoverColor;
+        
     }
 
     %btnActive{
-        background-color: $pinkColor;
-        box-shadow: 4px 4px 30px $pinkColor;
+        background-color: $btnPinkColor;
+        box-shadow: 4px 4px 30px $btnPinkColor;
     }
 
+    %mediaLink{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 39px;
+        height: 39px;
+        border: 1px solid $borderLight;
+        transition: border-color 0.6s, fill 0.6s;
+    }
+
+    %mediaLinkHover{
+        border-color: $mediaLinkInteractionColor;
+    }
+
+    %mediaLinkActive{
+        fill: $mediaLinkInteractionColor;
+    }
 
 *{
     margin: 0;
@@ -58,7 +87,7 @@ body{
 }
 
 .header{
-    border-bottom: 1px solid $linkGreyColor;
+    border-bottom: 1px solid $headerUnderLineColor;
     padding: 38px 0 36px;
     position: absolute;
     top: 0;
@@ -87,15 +116,16 @@ body{
         text-transform: capitalize; 
         @include font(13px, 15px, 700);
         text-decoration: none;
-    }
 
-    &__link:hover{
-        color:$linkGreyColor;
-    }
+        &:hover{
+        color:$linkHoverColor;
+        }
 
-    &__link:active{
-        color:$redColor;
+        &:active{
+            color:$linkActiveColor;
+        }
     }
+    
 }
 }
 
@@ -119,7 +149,7 @@ body{
         position: absolute;
         left: 0;
         top: 0;
-        background: $bgDark;
+        background: $bgShadowDark;
         opacity: 0.8;
     }
 
@@ -143,37 +173,39 @@ body{
 
     &__btn{
         @extend %btn;
-    }
 
-    &__btn:hover{
+        &:hover{
         @extend %btnHover;
+        }
+
+        &:active{
+            @extend %btnActive;
+        }
     }
 
-    &__btn:active{
-        @extend %btnActive;
-    }
+    
 }
 
 .features{
-    padding: 116px 0;
+    padding: 109px 0 116px;
 
     & .container{
         display: grid;
-        gap:88px 30px;
+        gap:88px 31px;
         grid-template-columns: repeat(3, 370px);
-        text-align: center;
-        justify-content: center;
+
     }
 }
 
-
-
 .feature{
-      
+
+      text-align: center;
+
     &__img{
         width: 100px;
         height: 100px;
         margin: 0 auto 51px;
+        
     }
 
     &__title{
@@ -185,7 +217,7 @@ body{
 
     &__text{
         @include font(18px, 21px);
-        color: $textCOlorGrey;
+        color: $textColorGrey;
     }
 }
 
@@ -202,11 +234,12 @@ body{
     position: relative;
     cursor: pointer;
 
+    
+
     &__img{
         width: 100%;
         height: 100%;
-        border: 1px solid $textColorLight;
-
+        border: 1px solid $borderWhiteColor;
     }
 
     &__info--hover{
@@ -222,8 +255,7 @@ body{
     &__title{
         @include font(24px, 28px, 900);
         margin-bottom: 36px;
-        text-transform: uppercase
-
+        text-transform: uppercase;
     }
 
     &__text{
@@ -239,8 +271,9 @@ body{
         position: absolute;
         left: 0;
         top: 0;
-        background-color:$pinkColor;
+        background-color:$cardHoverColor;
         opacity: 0.8;
+         transition: all 0.5s ease-in;
     }
 
     &:hover &__info--hover, &:active &__info--hover{
@@ -255,8 +288,9 @@ body{
         position: absolute;
         left: 0;
         top: 0;
-        background-color:$redColor;
+        background-color:$cardActiveColor;
         opacity: 0.8;
+        transition: all 0.5s ease-in;
     }
 }
 
@@ -287,14 +321,14 @@ body{
 
     &__position{
         @include font(18px, 21px);
-        color:$pinkColor;
+        color:$textColorPink;
         margin-bottom: 18px;
         text-transform: uppercase;
     }
 
     &__description{
          @include font(18px, 21px);
-        color:$textCOlorGrey;
+        color:$textColorGrey;
         margin-bottom: 38px;
     }
 
@@ -304,26 +338,23 @@ body{
     }
 
     &__link{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 39px;
-        height: 39px;
-        border: 1px solid $borderLight;
+        @extend  %mediaLink;
+
+        &:hover, &:active{
+          @extend  %mediaLinkHover;
+        }
+
+        &:active .link__img{
+           @extend  %mediaLinkActive;
+        }
     }
 
-    &__link:hover, &__link:active {
-        border-color: $pinkColor;
-    }
-
-    &__link:active .link__img{
-        fill: $pinkColor;
-    }
+    
 
 }
 
 .testimonials{
-    background-color:$bgPurpel;
+    background-color:$bgPurple;
 }
 
 .testimonial{
@@ -386,3 +417,68 @@ body{
     }
 }
 
+.footer{
+    padding: 71px 0 0;
+    background-color:$footerBgColor;
+            color: $textColorLight;
+        text-align: center;
+    
+
+    &__container{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap:30px;
+        margin-bottom: 71px;
+    }
+
+    &__title{
+        @include font(18px, 21px, 700);
+        text-transform: uppercase;
+        margin-bottom: 28px;
+    }
+
+    &__text{
+       @include font(18px, 21px);
+        text-transform: capitalize; 
+    }
+
+    &__wrapper-media{
+        margin-top: 48px;
+        display: flex;
+        gap: 27px;
+        justify-content:center;
+    }
+
+    &__link{
+        @extend  %mediaLink;
+
+        &:hover, &:active{
+          @extend  %mediaLinkHover;
+        }
+
+        &:active .link__img{
+           @extend  %mediaLinkActive;
+        }
+    }
+
+    &__special .container{
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    &__special{
+        background-color: $footerBgColorDark;
+        padding: 24px;
+    }
+
+    &__text-special{
+        color:$footerTextGrey;
+        @include font(18px, 21px);
+        text-transform: capitalize;
+    }
+
+    &__color{
+        color: $textColorLight;
+    }
+
+}
