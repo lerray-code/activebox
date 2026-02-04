@@ -1,0 +1,388 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+$mainFont:  "Raleway", sans-serif;
+$noteFont: "Cardo", serif;
+$textColorLight: #fff;
+$textColorDark: #000;
+$textCOlorGrey: #6C7279;
+$pinkColor: #FF4343;
+$redColor: #E71414;
+$linkGreyColor: #BABBC5;
+$bgPurpel: #5C3249;
+$bgDark: #252B49;
+$textNameDark: #2D3033;
+$borderLight: #C6CBCD;
+
+@mixin font($textSize, $lineHeight, $fontWeight: 400){
+    font-size: $textSize;
+    line-height: $lineHeight;
+    font-weight: $fontWeight;
+}
+
+%btn{
+    @include font(24px, 28px, 900);
+    color:$textColorLight;
+    text-transform: uppercase;
+    text-decoration: none;
+    background-color: $pinkColor;
+    padding: 25px 0;
+    border: 1px solid transparent;
+    max-width: 370px;
+    width: 100%;
+}
+    %btnHover{
+        background-color: $redColor;
+    }
+
+    %btnActive{
+        background-color: $pinkColor;
+        box-shadow: 4px 4px 30px $pinkColor;
+    }
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: $mainFont;
+}
+
+.container{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.header{
+    border-bottom: 1px solid $linkGreyColor;
+    padding: 38px 0 36px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+
+    &__logo{
+        display: flex;
+        max-width: 183px;
+        width: 100%;
+    }
+
+    & .container{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .nav{
+    display: flex;
+    gap:40px;
+
+    &__link{
+        color:$textColorLight;
+        text-transform: capitalize; 
+        @include font(13px, 15px, 700);
+        text-decoration: none;
+    }
+
+    &__link:hover{
+        color:$linkGreyColor;
+    }
+
+    &__link:active{
+        color:$redColor;
+    }
+}
+}
+
+
+
+.banner{
+    padding: 223px 0 126px;
+    background-image: url(../src/img.webp);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    position: relative;
+    z-index: 0;
+
+    &::before{
+        content: '';
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: $bgDark;
+        opacity: 0.8;
+    }
+
+    &__container{
+        z-index: 1;
+        position: relative;
+    }
+
+    &__title{
+        @include font(64px, 75px, 900);
+        text-transform: uppercase;
+        color: $textColorLight;
+        margin-bottom: 31px;
+    }
+
+    &__text{
+        @include font(24px, 28px);
+        margin-bottom: 79px;
+        color:$textColorLight;
+    }
+
+    &__btn{
+        @extend %btn;
+    }
+
+    &__btn:hover{
+        @extend %btnHover;
+    }
+
+    &__btn:active{
+        @extend %btnActive;
+    }
+}
+
+.features{
+    padding: 116px 0;
+
+    & .container{
+        display: grid;
+        gap:88px 30px;
+        grid-template-columns: repeat(3, 370px);
+        text-align: center;
+        justify-content: center;
+    }
+}
+
+
+
+.feature{
+      
+    &__img{
+        width: 100px;
+        height: 100px;
+        margin: 0 auto 51px;
+    }
+
+    &__title{
+        @include font(24px, 28px, 900);
+        text-transform: uppercase;
+        color: $textColorDark;
+        margin-bottom: 42px;
+    }
+
+    &__text{
+        @include font(18px, 21px);
+        color: $textCOlorGrey;
+    }
+}
+
+.works{
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+    padding: 0;
+}
+
+
+.work{
+    position: relative;
+    cursor: pointer;
+
+    &__img{
+        width: 100%;
+        height: 100%;
+        border: 1px solid $textColorLight;
+
+    }
+
+    &__info--hover{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        align-content: center;
+        text-align: center;
+        color: $textColorLight;
+        visibility: hidden;
+    }
+
+    &__title{
+        @include font(24px, 28px, 900);
+        margin-bottom: 36px;
+        text-transform: uppercase
+
+    }
+
+    &__text{
+        @include font(18px, 21px);
+        text-transform: capitalize;
+    }
+
+    &:hover::before{
+        content: '';
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background-color:$pinkColor;
+        opacity: 0.8;
+    }
+
+    &:hover &__info--hover, &:active &__info--hover{
+        visibility:visible;
+    }
+
+     &:active::before{
+        content: '';
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background-color:$redColor;
+        opacity: 0.8;
+    }
+}
+
+.teammates{
+    padding: 114px 0;
+
+    & .container{
+        display: grid;
+        grid-template-columns: repeat(4, 270px);
+        gap:30px;
+    }
+
+}
+
+.teammate{
+
+    &__img{
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+    &__name{
+        @include font(24px, 28px, 700);
+        text-transform: capitalize;
+        color:$textNameDark;
+        margin-bottom: 5px;
+    }
+
+    &__position{
+        @include font(18px, 21px);
+        color:$pinkColor;
+        margin-bottom: 18px;
+        text-transform: uppercase;
+    }
+
+    &__description{
+         @include font(18px, 21px);
+        color:$textCOlorGrey;
+        margin-bottom: 38px;
+    }
+
+    &__links{
+        display: flex;
+        gap: 5px;
+    }
+
+    &__link{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 39px;
+        height: 39px;
+        border: 1px solid $borderLight;
+    }
+
+    &__link:hover, &__link:active {
+        border-color: $pinkColor;
+    }
+
+    &__link:active .link__img{
+        fill: $pinkColor;
+    }
+
+}
+
+.testimonials{
+    background-color:$bgPurpel;
+}
+
+.testimonial{
+    display: flex;
+    gap: 31px;
+
+
+    &__img{
+        flex: 0 1 570px;
+        display: flex;
+    }
+
+    &__info{
+        flex: 0 1 570px;
+        padding: 116px 0;
+        align-self: center;
+        color:$textColorLight
+    }
+
+    &__text{
+        @include font(36px, 49px);
+        font-family: $noteFont;
+        font-style: italic;
+        text-transform: capitalize;
+        margin-bottom: 8px;
+    }
+
+    &__person{
+        @include font(13px, 15px, 700);
+        text-transform: uppercase;
+    }
+}
+
+.download {
+    text-align: center;
+    padding: 132px 0 114px;
+    
+    &__title{
+        @include font(30px, 35px, 500);
+        text-transform: capitalize;
+        margin-bottom: 22px;
+    }
+
+    &__text{
+        @include font(18px, 21px, 700);
+        text-transform: uppercase;
+        margin-bottom: 50px;
+    }
+
+    &__btn{
+       @extend %btn;
+    }
+
+     &__btn:hover{
+        @extend %btnHover;
+    }
+
+    &__btn:active{
+        @extend %btnActive;
+    }
+}
+
