@@ -113,6 +113,10 @@ body{
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 15px;
+    
+    @media (max-width:$mobile){
+        padding: 0 20px;
+    }
 
 
 }
@@ -169,7 +173,7 @@ body{
 
         &__link{
             color:$textColorLight;
-            text-transform: capitalize; 
+            text-transform: uppercase; 
             @include font(13px, 15px, 700);
             text-decoration: none;
 
@@ -347,7 +351,7 @@ body{
         }
     }
 
-    &__text{
+    &__description{
         @include font(18px, 21px);
         color: $textColorGrey;
         @media (max-width:$tablet){
@@ -381,7 +385,7 @@ body{
         border: 1px solid $borderWhiteColor;
     }
 
-    &__info--hover{
+    &__content{
         width: 100%;
         height: 100%;
         position: absolute;
@@ -392,6 +396,7 @@ body{
         top: 0;
         opacity: 0.8;
         transition: all 0.7s;  
+        padding: 10px;
     }
 
     &__title{
@@ -426,11 +431,11 @@ body{
         visibility:visible;
     }
 
-     &:hover &__info--hover{
+     &:hover &__content{
         background-color:$cardHoverColor;
     }
 
-     &:active &__info--hover{
+     &:active &__content{
         background-color:$cardActiveColor;
     }
 }
@@ -533,6 +538,10 @@ body{
 
         &:active .link__img{
            @extend  %mediaLinkActive;
+        }
+
+        .link__img{
+            transition: border-color 0.3s;
         }
     }
 
@@ -671,8 +680,9 @@ body{
        @extend %btn;
 
         @media (max-width:$mobile){
-        max-width: 280px;
-        padding: 26px 0;
+            @include font(18px, 21px);
+            max-width: 280px;
+            padding: 26px 0;
     }
 
     }
@@ -769,7 +779,7 @@ body{
           @extend  %mediaLinkHover;
         }
 
-        &:active .link__img{
+        &:active .footer__media{
            @extend  %mediaLinkActive;
         }
     }
@@ -781,14 +791,14 @@ body{
 
     &__special{
         background-color: $footerBgColorDark;
-        padding: 24px;
+        padding: 24px 0;
         
         @media (max-width:$tablet){
-            padding: 14px;
+            padding: 14px 0;
         }
 
         @media (max-width:$mobile){
-            padding: 29px;
+            padding: 29px 0;
         }
     }
 

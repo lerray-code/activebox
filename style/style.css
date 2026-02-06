@@ -60,7 +60,7 @@
   border-color: #FF4343;
 }
 
-.footer__link:active .link__img, .teammate__link:active .link__img {
+.footer__link:active .footer__media, .teammate__link:active .link__img {
   fill: #FF4343;
 }
 
@@ -78,6 +78,11 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 15px;
+}
+@media (max-width: 767px) {
+  .container {
+    padding: 0 20px;
+  }
 }
 
 .header {
@@ -136,7 +141,7 @@ body {
 }
 .header .nav__link {
   color: #fff;
-  text-transform: capitalize;
+  text-transform: uppercase;
   font-size: 13px;
   line-height: 15px;
   font-weight: 700;
@@ -322,14 +327,14 @@ body {
     margin-bottom: 8px;
   }
 }
-.feature__text {
+.feature__description {
   font-size: 18px;
   line-height: 21px;
   font-weight: 400;
   color: #6C7279;
 }
 @media (max-width: 1024px) {
-  .feature__text {
+  .feature__description {
     font-size: 14px;
     line-height: 16px;
     font-weight: 400;
@@ -358,7 +363,7 @@ body {
   height: 100%;
   border: 1px solid #fff;
 }
-.work__info--hover {
+.work__content {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -369,6 +374,7 @@ body {
   top: 0;
   opacity: 0.8;
   transition: all 0.7s;
+  padding: 10px;
 }
 .work__title {
   font-size: 24px;
@@ -410,10 +416,10 @@ body {
 .work:hover .work__text, .work:hover .work__title {
   visibility: visible;
 }
-.work:hover .work__info--hover {
+.work:hover .work__content {
   background-color: #FF4343;
 }
-.work:active .work__info--hover {
+.work:active .work__content {
   background-color: #E71414;
 }
 
@@ -526,6 +532,10 @@ body {
   display: flex;
   gap: 5px;
 }
+.teammate__link .link__img {
+  transition: border-color 0.3s;
+}
+
 .testimonials {
   background-color: #5C3249;
 }
@@ -679,6 +689,9 @@ body {
 }
 @media (max-width: 767px) {
   .download__btn {
+    font-size: 18px;
+    line-height: 21px;
+    font-weight: 400;
     max-width: 280px;
     padding: 26px 0;
   }
@@ -775,16 +788,16 @@ body {
 }
 .footer__special {
   background-color: #2C3154;
-  padding: 24px;
+  padding: 24px 0;
 }
 @media (max-width: 1024px) {
   .footer__special {
-    padding: 14px;
+    padding: 14px 0;
   }
 }
 @media (max-width: 767px) {
   .footer__special {
-    padding: 29px;
+    padding: 29px 0;
   }
 }
 .footer__text-special {
