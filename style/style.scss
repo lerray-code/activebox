@@ -52,9 +52,14 @@ $mobile: 767px;
     border: none;
     max-width: 370px;
     width: 100%;
-    transition: background-color 0.6s, box-shadow  0.2s;
+    cursor: pointer;
+    transition: background-color 1s, box-shadow 0.5s ;
+
+    
+
     @media (max-width:$tablet){
         max-width: 314px;
+
     }
     @media (max-width:$mobile){
         max-width: 279px;
@@ -64,12 +69,13 @@ $mobile: 767px;
 }
     %btnHover{
         background-color: $btnHoverColor;
-        
     }
 
     %btnActive{
         background-color: $btnPinkColor;
         box-shadow: 4px 4px 30px $btnPinkColor;
+       
+        
     }
 
     %mediaLink{
@@ -80,6 +86,7 @@ $mobile: 767px;
         height: 39px;
         border: 1px solid $borderLight;
         transition: border-color 0.6s;
+        cursor: pointer;
         
         @media (max-width:$tablet){
         width: 33px;
@@ -176,6 +183,9 @@ body{
             text-transform: uppercase; 
             @include font(13px, 15px, 700);
             text-decoration: none;
+            cursor: pointer;
+            transition: color 0.8s;
+
 
          @media (max-width:$tablet){
             @include font(12px, 14px, 700);
@@ -541,7 +551,7 @@ body{
         }
 
         .link__img{
-            transition: border-color 0.3s;
+            transition: fill 0.8s;
         }
     }
 
@@ -680,7 +690,7 @@ body{
        @extend %btn;
 
         @media (max-width:$mobile){
-            @include font(18px, 21px);
+            @include font(18px, 21px, 900);
             max-width: 280px;
             padding: 26px 0;
     }
@@ -782,7 +792,14 @@ body{
         &:active .footer__media{
            @extend  %mediaLinkActive;
         }
+
+        .footer__media{
+           transition: fill 0.8s;
+        }
+         
     }
+
+
 
     &__special .container{
         max-width: 400px;
@@ -817,3 +834,4 @@ body{
     }
 
 }
+

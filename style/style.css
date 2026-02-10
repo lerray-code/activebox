@@ -11,7 +11,8 @@
   border: none;
   max-width: 370px;
   width: 100%;
-  transition: background-color 0.6s, box-shadow 0.2s;
+  cursor: pointer;
+  transition: background-color 1s, box-shadow 0.5s;
 }
 @media (max-width: 1024px) {
   .download__btn, .banner__btn {
@@ -42,6 +43,7 @@
   height: 39px;
   border: 1px solid #C6CBCD;
   transition: border-color 0.6s;
+  cursor: pointer;
 }
 @media (max-width: 1024px) {
   .footer__link, .teammate__link {
@@ -146,6 +148,8 @@ body {
   line-height: 15px;
   font-weight: 700;
   text-decoration: none;
+  cursor: pointer;
+  transition: color 0.8s;
 }
 @media (max-width: 1024px) {
   .header .nav__link {
@@ -533,7 +537,7 @@ body {
   gap: 5px;
 }
 .teammate__link .link__img {
-  transition: border-color 0.3s;
+  transition: fill 0.8s;
 }
 
 .testimonials {
@@ -691,7 +695,7 @@ body {
   .download__btn {
     font-size: 18px;
     line-height: 21px;
-    font-weight: 400;
+    font-weight: 900;
     max-width: 280px;
     padding: 26px 0;
   }
@@ -781,6 +785,9 @@ body {
     gap: 16px;
     margin-top: 36px;
   }
+}
+.footer__link .footer__media {
+  transition: fill 0.8s;
 }
 .footer__special .container {
   max-width: 400px;
